@@ -146,7 +146,7 @@ class PanaromaStitcher:
         return transformed_pts
 
     def warp_image(self, img1, img2, H, output_shape):
-        h_out, w_out = output_shape    
+        h_out, w_out = output_shape
         xx, yy = np.meshgrid(np.arange(w_out), np.arange(h_out))
         ones = np.ones_like(xx)
         coords = np.stack([xx, yy, ones], axis=-1).reshape(-1, 3)
@@ -156,7 +156,7 @@ class PanaromaStitcher:
         coords_transformed[coords_transformed[:, 2] == 0, 2] = 1e-10
         coords_transformed /= coords_transformed[:, 2, np.newaxis]
 
-        x_src = coords_transformed[:, 0]  
+        x_src = coords_transformed[:, 0]
         y_src = coords_transformed[:, 1]
 
         valid_indices = (
